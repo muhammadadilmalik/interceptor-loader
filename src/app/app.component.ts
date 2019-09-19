@@ -8,12 +8,11 @@ import { HttpClient } from '@angular/common/http';
   providers: [HttpClient]
 })
 export class AppComponent implements OnInit {
-  title = 'testing';
+  
   constructor(private _http: HttpClient) {
     this.loadContent();
-
-    
   }
+
   ngOnInit() {
     console.log("component initialized...");
   }

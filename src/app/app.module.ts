@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { myInterceptor } from 'service/myInterceptor';
 import { LoaderComponentComponent } from './loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatSnackBarModule } from '@angular/material'
+import { MatSnackBarModule, MatButtonModule } from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { MatSnackBarModule } from '@angular/material'
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule
   ],
   providers:  [
                 loaderService,
