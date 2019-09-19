@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   loadGoogle(){
-    this._http.get("https://google.com").subscribe(data=>{
+    this._http.get("https://temp.com").subscribe(data=>{
       console.log(data);
     })
   }

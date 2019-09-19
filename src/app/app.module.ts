@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { loaderService } from 'service/loaderService';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { myInterceptor } from 'service/myInterceptor';
+import { interceptor } from 'service/interceptor';
 import { LoaderComponentComponent } from './loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatSnackBarModule, MatButtonModule } from '@angular/material'
@@ -25,7 +25,7 @@ import { MatSnackBarModule, MatButtonModule } from '@angular/material'
   ],
   providers:  [
                 loaderService,
-                {provide: HTTP_INTERCEPTORS, useClass: myInterceptor, multi: true}
+                {provide: HTTP_INTERCEPTORS, useClass: interceptor, multi: true}
               ],
   bootstrap: [AppComponent]
 })

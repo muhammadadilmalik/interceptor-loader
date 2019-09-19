@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core'
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http'
-import { Observable, of } from "rxjs";
-import { tap, catchError } from "rxjs/operators";
+import { Observable, of, timer } from "rxjs";
+import { tap, catchError, delay } from "rxjs/operators";
 import { loaderService } from './loaderService';
 import { MatSnackBar } from '@angular/material';
 
 declare var $: any;
 
 @Injectable()
-export class myInterceptor implements HttpInterceptor {
+export class interceptor implements HttpInterceptor {
     private requests: HttpRequest<any>[]=[];
 
     constructor(private loaderService: loaderService,
@@ -36,11 +36,14 @@ export class myInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.addRequest(req);
+        
         return next.handle(req)
             .pipe(
                 tap(ev => {
                         if(ev instanceof HttpResponse) {
+                            console.log(ev);
                             this.removeRequest(req);
+                            this.snakBar.open( JSON.stringify(ev), '', {duration: 2000});
                         }
                     }
                 ),
